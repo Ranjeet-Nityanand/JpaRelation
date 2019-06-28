@@ -35,6 +35,7 @@ public class JpaprogramApplication implements CommandLineRunner {
 		SpringApplication.run(JpaprogramApplication.class, args);
 	}
 
+	// Test for Git
 	/*
 	 * (non-Javadoc)
 	 * 
