@@ -29,15 +29,14 @@ public class StudentRepository {
 		em.persist(student);
 	}
 
-	/**
-	 * 
-	 */
 	@Transactional
 	public Student findAllStudent(Integer id) {
 		Student student = em.find(Student.class, id);
 		Passport passport = student.getPassport();
-		passport.setPassportNo("L25456");
+		// passport.setPassportNo("L25456");
 		student.setName("Ranjeet Kumar");
+		logger.error("Student with passport=" + student);
+		// logger.error("passport in student=" + passport.getStudent());
 		return student;
 	}
 	
@@ -45,5 +44,6 @@ public class StudentRepository {
 	public void SaveStudentWithPassport(Student student, Passport passport) {
 		em.persist(passport);
 		em.persist(student);
+		// logger.error("value of student and passport =" + student);
 	}
 }

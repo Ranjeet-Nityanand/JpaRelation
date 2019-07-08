@@ -1,9 +1,11 @@
-/****/package com.jpa.example.jpaprogram.domain;
+package com.jpa.example.jpaprogram.domain;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /***
@@ -20,6 +22,8 @@ import javax.persistence.Table;
  private Integer id;
  private Integer rating;
  private String description;
+	@ManyToOne(fetch = FetchType.LAZY)
+	private Course course;
 
  public Review() {
  super();
@@ -43,7 +47,15 @@ import javax.persistence.Table;
 		this.description = description;
 	}
 
- public void setId(Integer id) {
+	public Course getCourse() {
+		return course;
+	}
+
+	public void setCourse(Course course) {
+		this.course = course;
+	}
+
+	public void setId(Integer id) {
  this.id = id;
  }
 
@@ -67,8 +79,9 @@ import javax.persistence.Table;
  return description;
  }
 
- @Override
- public String toString() {
-		return "Review[Id=" + id + "Rating=" + rating + " Description=" + description + " ]\n";
- }
+	@Override
+	public String toString() {
+		return "Review [id=" + id + ", rating=" + rating + ", description=" + description + ", course=" + course + "]";
+	}
+
  }

@@ -50,6 +50,7 @@ public class JpaprogramApplication implements CommandLineRunner {
 		// studentRepo.saveStudent(student);
 		// studentRepo.SaveStudentWithPassport(student, p);
 		Student student4 = studentRepo.findAllStudent(1);
+		// logger.error("Value of Student" + student4);
 		// logger.error("Fetched Data=" + student4);
 		// logger.error("passport Details" + student4.getPassport());
 		Course course = new Course("M-tech");
@@ -64,5 +65,7 @@ public class JpaprogramApplication implements CommandLineRunner {
 		Review r2 = new Review(5, "excelent");
 		Review r3 = new Review(4, "nice");
 		// reviewRepo.saveReview(r3);
+		// reviewRepo.saveReviewWithCourse(4, r3);
+		passportRepo.showPassport(21);
 	}
 }
