@@ -1,7 +1,6 @@
 package com.jpa.example.jpaprogram.domain;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -22,7 +21,7 @@ import javax.persistence.Table;
  private Integer id;
  private Integer rating;
  private String description;
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne // always eager Fatching
 	private Course course;
 
  public Review() {

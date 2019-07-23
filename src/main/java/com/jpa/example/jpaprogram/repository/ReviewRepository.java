@@ -40,8 +40,17 @@ public class ReviewRepository {
 	@Transactional
 	public void saveReviewWithCourse(Integer id, Review r) {
 		Course course = em.find(Course.class, id);
-		r.setCourse(course);
-		em.persist(r);
+		System.err.println("Course Reviews are->" + course.getReviews());
+		Review review1 = new Review(5, "Great course");
+		Review review2 = new Review(5, "nice course");
+		course.addReview(review1);
+		review1.setCourse(course);
+		course.addReview(review2);
+		review2.setCourse(course);
+		// r.setCourse(course);
+		// em.persist(r);
+		// em.persist(review1);
+		// em.persist(review2);
 		System.err.println("Course with Review" + r);
 	}
 

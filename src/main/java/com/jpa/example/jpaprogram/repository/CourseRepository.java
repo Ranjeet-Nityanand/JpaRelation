@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.jpa.example.jpaprogram.domain.Course;
+import com.jpa.example.jpaprogram.domain.Review;
 
 /**
  * @author Ranjeet
@@ -26,6 +27,9 @@ public class CourseRepository {
 	@Transactional
 	public void saveCourse(Course course) {
 		em.persist(course);
+		Review review = new Review("Description");
+		review.setCourse(course);
+		em.persist(review);
 	}
 
 }

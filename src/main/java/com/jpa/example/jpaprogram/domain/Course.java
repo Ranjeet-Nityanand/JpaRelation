@@ -3,6 +3,7 @@
  */
 package com.jpa.example.jpaprogram.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -10,6 +11,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -25,8 +27,21 @@ public class Course {
 	private Integer id;
 	private String name;
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "course")
-	private List<Review> reviews;
+	private List<Review> reviews = new ArrayList<>();
+	@ManyToMany(mappedBy = "courses")
+	private List<Student> students = new ArrayList<>();
 
+	public List<Student> getStudents() {
+		return students;
+	}
+
+	public void setStudents(List<Student> students) {
+		this.students = students;
+	}
+
+	public void addStudent(Student student) {
+		this.students.add(student);
+	}
 	public List<Review> getReviews() {
 		return reviews;
 	}

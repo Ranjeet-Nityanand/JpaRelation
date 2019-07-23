@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.jpa.example.jpaprogram.domain.Course;
 import com.jpa.example.jpaprogram.domain.Passport;
 import com.jpa.example.jpaprogram.domain.Student;
 
@@ -42,8 +43,30 @@ public class StudentRepository {
 	
 	@Transactional
 	public void SaveStudentWithPassport(Student student, Passport passport) {
-		em.persist(passport);
-		em.persist(student);
+		// em.persist(passport);
+		// em.persist(student);
 		// logger.error("value of student and passport =" + student);
 	}
+
+	/**
+	 * @param student
+	 * @param course
+	 */
+	@Transactional
+	public void saveStudentWithCourse(Student student, Course course) {
+		em.persist(student);
+		em.persist(course);
+
+		student.addCourse(course);
+		course.addStudent(student);
+		em.persist(student);
+		System.err.println("Student with Course=>" + student);
+	}
+
+	/**
+	 * @param i
+	 */
+	/*
+	 * public void fetchStudentWithCourse(int i) { em.f }
+	 */
 }
